@@ -1,5 +1,6 @@
 #VocaTest_PythonApplication
 #PYTHON RULES!!!
+
 eng = []
 eng = ['no_input_eng']*100
 kor = []
@@ -12,14 +13,9 @@ w_cnt = 0
 record_endless = 'Before'
 input_key = True
 
-#
-#TO-DO: Adding Clear-Screen Mode & Writing User Guide(WEB/text)
-#Additional Feature(need to code): clear-screen mode
-'''
-    #ClearScreen code - this should be programmed logically(flowchart first)
-    import os
-    os.system('cls')
-'''
+#Clearscreen mode import
+import os
+
 
 # LOOP: Main Code - It doesn't break if endless mode is enabled
 while True:
@@ -35,7 +31,7 @@ while True:
         elif choose == 'D':
             break
 
-        #execute code by input_key
+        #Execute code by input_key
         if input_key:
             # LOOP: Change variable(choose) & Enter Words
             print("\nEnter the words you want to memorize.\nTo stop, type 'ESC'.")
@@ -55,6 +51,8 @@ while True:
                 if kor[w_cnt] == 'esc' or kor[w_cnt] == 'ESC':      #Break when esc entered
                     break
                 w_cnt = w_cnt + 1
+            #cls
+            os.system('cls')
 
 
         #Enter Choice (Edit/Add/Both/Not)
@@ -75,6 +73,8 @@ while True:
             #2nd Conditional Statement: execute by commend(e/a/b/n)
             #Edit Sequence
             if choose == 'e' or choose == 'E':
+                #cls
+                os.system('cls')
                 while True:
                     for e in range(w_cnt):
                         print('Word#' + str(e+1) + ' : ' + eng[e] + ' - ' + kor[e])
@@ -83,28 +83,39 @@ while True:
                     kor[int(edit_num) - 1] = input()
                     choose_edit = input('Would you like to edit again? (y/n): ')
                     if choose_edit == 'y' or choose_edit == 'Y':
+                        os.system('cls')    #cls
                         pass
                     elif choose_edit == 'n' or choose_edit == 'N':
                         choose = 'D'        #because it's conditional statement, it directly goes up to LOOP 'Enter Choice'
                         break
                     #Error Message
                     else:
+                        #cls
+                        os.system('cls')
                         print("Error: your input is wrong. Please enter 'y' or 'n' again.")
                 input_key = False
+
             #the others
             elif choose == 'a' or choose == 'A':
                 input_key = True
+                os.system('cls')    #cls
                 break
             elif choose == 'b' or choose == 'B':
                 input_key = True
+                os.system('cls')    #cls
                 break
             elif choose == 'n' or choose == 'N':
                 input_key = False
+                os.system('cls')    #cls
                 break
             #Error Message
             else:
                 print('Error: your input is wrong. Please enter again.')
+        
+        #cls
+        os.system('cls')
     
+
     #The TEST Algorithm (Independent)
     while True:
 
@@ -142,6 +153,8 @@ while True:
             for tCheck in range(w_cnt):
                 if t_answer[tCheck] == kor[tCheck]:
                     score = score + 1
+            #cls
+            os.system('cls')
             #Output
             print('\n\nScore: ' + str(score) + '/' + str(w_cnt))
             if score == w_cnt:
@@ -155,12 +168,18 @@ while True:
             break
         #Error Message
         else:
+            #cls
+            os.system('cls')
             print('Error: your input is wrong. Please enter again.')
-    
+
+    #Move to next code(clearscren mode)
+    dummy = input('\n\nType anything to proceed: ')
+    os.system('cls')    #cls
+
     #Endless Mode
     if record_endless == 'Before':
         while True:
-            choose_endless = input('Would you like to start Endless Mode?(y/n)\n')
+            choose_endless = input('\nWould you like to start Endless Mode?(y/n)\n')
             if choose_endless == 'n' or choose_endless == 'N':
                 break
             elif choose_endless == 'y' or choose_endless == 'Y':
@@ -169,16 +188,21 @@ while True:
                 break
             #Error Message
             else:
+                #cls
+                os.system('cls')
                 print('Error: your input is wrong. Please enter again.')
 
     #Break Main Loop
     if choose_endless == 'n' or choose_endless == 'N':
         break
 
+#cls
+os.system('cls')
+
 #Credit
 print('''
     -VocaTest Program-
     Made by Suho
     GitHub Username: Daon1109
-    Last Update: 10/22/2021
+    Last Update: 11/04/2021
 ''')

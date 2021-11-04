@@ -9,18 +9,19 @@ a_answer = ['idk_answer']*100
 t_answer = []
 t_answer = ['idk_answer']*100
 w_cnt = 0
-choose_endless = 'Before'
+record_endless = 'Before'
 input_key = True
 
-#TO-DO: Adding The Endless Mode
+#
+#TO-DO: Adding Clear-Screen Mode & Writing User Guide(WEB/text)
 #Additional Feature(need to code): clear-screen mode
 '''
-    #ClearScreen code - this should be programmed logically 
+    #ClearScreen code - this should be programmed logically(flowchart first)
     import os
     os.system('cls')
 '''
 
-# LOOP: Main Code - It doesn't break while endless mode is enabled
+# LOOP: Main Code - It doesn't break if endless mode is enabled
 while True:
     #Reset variable 'choose'
     choose = 'x'
@@ -37,7 +38,7 @@ while True:
         #execute code by input_key
         if input_key:
             # LOOP: Change variable(choose) & Enter Words
-            print('\nEnter the words you want to memorize')
+            print("\nEnter the words you want to memorize.\nTo stop, type 'ESC'.")
             while True:
 
                 #Change the variable(choose)'s value
@@ -118,7 +119,7 @@ while True:
         # A : Open-Answer Mode
         if choose_test == 'a' or choose_test == 'A':
             print('\nOpen-Answer Mode: Enter the right answer')
-            #Input answer & Output variale 'kor[]' (a.k.a ping-pong Algorithm)
+            #Ping-pong Algorithm: Input answer & Output variale 'kor[]'(Answer)
             for a in range(w_cnt):
                 a_answer[a] = input('\n' + eng[a] + ' : ')
                 if a_answer[a] == kor[a]:           #Correct Answer 
@@ -143,6 +144,8 @@ while True:
                     score = score + 1
             #Output
             print('\n\nScore: ' + str(score) + '/' + str(w_cnt))
+            if score == w_cnt:
+                print('\nYou got a perfect score!\n')
             for wrongAns in range(w_cnt):
                 if t_answer[wrongAns] != kor[wrongAns]:
                     wrong_cnt = wrong_cnt + 1
@@ -155,19 +158,21 @@ while True:
             print('Error: your input is wrong. Please enter again.')
     
     #Endless Mode
-    if choose_endless == 'Before':
+    if record_endless == 'Before':
         while True:
             choose_endless = input('Would you like to start Endless Mode?(y/n)\n')
             if choose_endless == 'n' or choose_endless == 'N':
                 break
             elif choose_endless == 'y' or choose_endless == 'Y':
                 input_key = False
+                record_endless = 'After'
                 break
             #Error Message
             else:
                 print('Error: your input is wrong. Please enter again.')
+
     #Break Main Loop
-    if choose_endless == 'n' or 'N':
+    if choose_endless == 'n' or choose_endless == 'N':
         break
 
 #Credit
@@ -175,5 +180,5 @@ print('''
     -VocaTest Program-
     Made by Suho
     GitHub Username: Daon1109
-    Last Update: 10/17/2021
+    Last Update: 10/22/2021
 ''')

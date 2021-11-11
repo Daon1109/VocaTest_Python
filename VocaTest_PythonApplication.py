@@ -1,6 +1,11 @@
 #VocaTest_PythonApplication
 #PYTHON RULES!!!
 
+#To-Do
+#Add file read mode(chooseable)
+#file search & making file
+
+
 eng = []
 eng = ['no_input_eng']*100
 kor = []
@@ -13,6 +18,8 @@ w_cnt = 0
 record_endless = 'Before'
 input_key = True
 
+#time module for credit
+import time
 #Clearscreen mode import
 import os
 
@@ -206,3 +213,7 @@ print('''
     GitHub Username: Daon1109
     Last Update: 11/04/2021
 ''')
+print('\n\n<COUNTDOWN>')
+for cntdown in range(5):
+    time.sleep(1)
+    print(5-cntdown)
